@@ -9,10 +9,12 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 
 RUN mkdir /shoe-shop
 WORKDIR /shoe-shop
-COPY Gemfile /shoe-shop/Gemfile
-COPY Gemfile.lock /shoe-shop/Gemfile.lock
-RUN bundle install
 COPY . /shoe-shop
+RUN bundle install
+RUN yarn install
+
+# Only precompile assets when not in development mode.
+RUN if [ "${RAILS_ENV}" != "development" ]; then rails assets:precompile; fi
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
