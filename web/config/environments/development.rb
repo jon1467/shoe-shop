@@ -1,4 +1,24 @@
+require 'socket'
+require 'ipaddr'
+
 Rails.application.configure do
+  # https://stackoverflow.com/a/49387216/7497632
+  # When inside a docker container
+  if File.file?('/.dockerenv')
+    # Whitelist docker ip for web console
+    # Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.1
+    Socket.ip_address_list.each do |addrinfo|
+      next unless addrinfo.ipv4?
+      next if addrinfo.ip_address == "127.0.0.1" # Already whitelisted
+
+      ip = IPAddr.new(addrinfo.ip_address).mask(24)
+
+      Logger.new(STDOUT).info "Adding #{ip.inspect} to config.web_console.whitelisted_ips"
+
+      config.web_console.whitelisted_ips << ip
+    end
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
