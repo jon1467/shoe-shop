@@ -16,7 +16,7 @@ class ProductBox extends React.Component {
     return (
       <div className="product-box" onClick={this.goToProductPage}>
         <div className="product-box__image-container">
-          <img src={this.props.imagePath} alt="..." className="product-box__image" />
+          <img src={this.props.imagePath} alt={this.props.title} className="product-box__image" />
         </div>
         <div className="product-box__info">
           <div className="product-box__title">{this.props.title}</div>

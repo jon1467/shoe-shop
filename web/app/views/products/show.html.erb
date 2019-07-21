@@ -1,0 +1,15 @@
+<% if @product.nil? %>
+<h1>Hmm. Didn't find that!</h1>
+<% else %>
+
+<%= react_component("product/Product",
+  {
+    title: @product.title,
+    price: @product.price,
+    imagePath: product_image_url(@product.id)
+  },
+  {
+    class: "product"
+  })
+%>
+<% end %>

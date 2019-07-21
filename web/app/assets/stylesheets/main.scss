@@ -1,4 +1,14 @@
+@import 'theme';
+
 body {
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 20px;
+}
+
+.button {
+  background-color: $main-colour;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 4px 0px $border-colour;
+  text-align: center;
 }
