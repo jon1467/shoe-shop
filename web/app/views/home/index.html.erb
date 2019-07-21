@@ -1,0 +1,17 @@
+<h1>Shoe Shop</h1>
+
+<div class="products">
+  <% @products.each do |product| %>
+    <%= react_component("ProductBox",
+      {
+        title: product.title,
+        price: product.price,
+        imagePath: url_for(product.image),
+        productURL: "##{product.title}"
+      },
+      {
+        class: "product-box-container"
+      })
+    %>
+  <% end %>
+</div>
