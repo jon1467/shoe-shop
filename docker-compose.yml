@@ -25,3 +25,6 @@ services:
       - ./web:/shoe-shop:cached
     ports:
       - 3035:3035
+    depends_on:
+      - db
+      - web
