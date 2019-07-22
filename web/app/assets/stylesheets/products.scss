@@ -18,11 +18,15 @@ $margin-wo-wrap: 25px;
 .product__image-container {
   flex-grow: 1;
   border: solid black 1px;
+
+  max-width: 500px;
 }
 
 .product__image {
   display: block;
   margin: 0 auto;
+
+  width: 100%;
 }
 
 .product__info {
