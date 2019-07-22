@@ -26,9 +26,14 @@ body {
 
 .button {
   border-radius: 4px;
-  background-color: $main-colour;
   padding: 10px;
   box-shadow: inset 0px 0px 4px 0px $border-colour;
   text-align: center;
   cursor: pointer;
+  user-select: none;
+}
+
+.button--buy {
+  background-color: $main-colour;
+  color: $text-overlay-colour;
 }
