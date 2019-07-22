@@ -12,7 +12,13 @@
   </head>
 
   <body>
-    <h1 class="banner"><a href="/">Shoe Shop</a></h1>
+    <div class="banner">
+      <h1 class="banner__title"><a href="/">Shoe Shop</a></h1>
+      <%= react_component "basket/BannerBasket",
+        { imagePath: image_url("icon/basket.png") },
+        { class: "banner-basket" }
+      %>
+    </div>
     <div class="main__container">
       <%= yield %>
     </div>

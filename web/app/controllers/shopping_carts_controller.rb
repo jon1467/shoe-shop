@@ -8,12 +8,15 @@ class ShoppingCartsController < ApplicationController
     @product_list = {}
     session[:cart] ||= {}
     session[:cart].each do |product_id, quantity|
+      p = Product.find(product_id.to_i)
       @product_list[product_id] = {
         quantity: quantity,
-        product: Product.find(product_id)
+        product: p,
+        imagePath: helpers.product_image_url(p.id),
+        productPath: product_url(p)
       }
     end
-    render json: @product_list
+    @product_list
   end
 
   def add

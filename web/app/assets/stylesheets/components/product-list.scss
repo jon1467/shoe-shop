@@ -1,0 +1,45 @@
+@import 'theme';
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-list-item {
+  display: flex;
+
+  width: 100%;
+  height: 80px;
+
+  border: $item-border;
+}
+
+.product-list-item__image-container {
+  width: 80px;
+  height: 80px;
+
+  border-right: $item-border;
+}
+
+.product-list-item__image {
+  width: 100%;
+}
+
+.product-list-item__info {
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px;
+}
+
+.product-list-item__title {
+  color: $text-colour;
+}
+
+.product-list-item__price {
+  color: $highlight-colour;
+}
+
+.product-list-item__quantity {
+  margin: auto 15px auto auto;
+}

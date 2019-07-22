@@ -17,7 +17,7 @@ $margin-wo-wrap: 25px;
 
 .product__image-container {
   flex-grow: 1;
-  border: solid black 1px;
+  border: $item-border;
 
   max-width: 500px;
 }

@@ -12,16 +12,23 @@ body {
 }
 
 .banner {
+  display: flex;
+  justify-content: space-between;
+
   position: sticky;
   top: 0;
-  margin: 0;
   background-color: $highlight-colour;
   padding: 15px;
+  text-decoration: none;
 
   a {
     color: $text-overlay-colour;
     text-decoration: none;
   }
+}
+
+.banner__title {
+  margin: 0;
 }
 
 .button {
