@@ -7,10 +7,12 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
     libc-dev linux-headers libxml2-dev libxslt-dev readline-dev gcc libc-dev \
   && rm -rf /var/cache/apk/*
 
+ENV RAILS_ENV production
+
 RUN mkdir /shoe-shop
 WORKDIR /shoe-shop
 COPY . /shoe-shop
-RUN bundle install
+RUN if [ "${RAILS_ENV}" != "development" ]; then bundle install --without development; else bundle install; fi
 RUN yarn install
 
 # Only precompile assets when not in development mode.
