@@ -5,11 +5,19 @@ class Product extends React.Component {
   constructor () {
     super()
 
-    this.addToBasket = this.addToBasket.bind(this)
+    this.addToCart = this.addToCart.bind(this)
   }
 
-  addToBasket () {
-    console.log(`add to basket: ${this.props.title}`)
+  addToCart () {
+    fetch(this.props.addToCartURL, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({ id: this.props.id })
+    }).then(response => response.json().then(data => { console.log(data) }))
   }
 
   render () {
@@ -23,7 +31,7 @@ class Product extends React.Component {
             <h2 className="product__title">{this.props.title}</h2>
             <h3 className="product__price">£{this.props.price}</h3>
           </div>
-          <div className="button button--buy button--product" onClick={this.addToBasket}>Add To Cart</div>
+          <div className="button button--buy button--product" onClick={this.addToCart}>Add To Cart</div>
         </div>
       </React.Fragment>
     )

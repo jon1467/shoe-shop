@@ -4,9 +4,11 @@
 
 <%= react_component("product/Product",
   {
+    id: @product.id,
     title: @product.title,
     price: @product.price,
-    imagePath: product_image_url(@product.id)
+    imagePath: product_image_url(@product.id),
+    addToCartURL: shopping_carts_add_url
   },
   {
     class: "product"
