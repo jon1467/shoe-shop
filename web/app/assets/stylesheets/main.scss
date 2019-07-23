@@ -38,6 +38,10 @@ body {
   text-align: center;
   cursor: pointer;
   user-select: none;
+
+  &:active {
+    box-shadow: inset 0px 0px 8px 0px $border-colour;
+  }
 }
 
 .button--buy {
