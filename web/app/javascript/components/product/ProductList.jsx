@@ -37,6 +37,9 @@ class ProductList extends React.Component {
           return <ProductListItem {...listItem} key={index}/>
         })}
         <div className="product-list__total money">£{this.total()}</div>
+        <div className="product-list__buy-button button button--buy">
+          Purchase
+        </div>
       </React.Fragment>
     )
   }
