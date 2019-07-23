@@ -24,7 +24,7 @@ class ProductList extends React.Component {
     const reducer = (acc, value) => {
       return acc + value.quantity * parseFloat(value.product.price)
     }
-    return this.state.productList.reduce(reducer, 0)
+    return this.state.productList.reduce(reducer, 0).toFixed(2)
   }
 
   render () {
