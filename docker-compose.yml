@@ -22,7 +22,7 @@ services:
     stdin_open: true
     tty: true
   webpacker:
-    build: ./web
+    image: shoe-shop_web
     command: ["./webpack_dev.sh"]
     volumes:
       - ./web:/shoe-shop:cached

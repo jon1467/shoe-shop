@@ -7,7 +7,8 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
     libc-dev linux-headers libxml2-dev libxslt-dev readline-dev gcc libc-dev \
   && rm -rf /var/cache/apk/*
 
-ENV RAILS_ENV production
+ARG RAILS_ENV
+ENV RAILS_ENV $RAILS_ENV
 
 RUN mkdir /shoe-shop
 WORKDIR /shoe-shop
