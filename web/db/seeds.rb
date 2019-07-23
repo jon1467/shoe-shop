@@ -11,7 +11,7 @@ Dir.glob(File.join(File.dirname(__FILE__), '../app/assets/images/shoes/**/*')).m
   image_name = File.basename(shoe_image, ".*")
   p = Product.create(
     title: image_name.underscore.split('_').collect{|c| c.capitalize}.join(' '),
-    price: 30.99
+    price: rand(100) + 0.99
   )
   p.image.attach(io: File.open(shoe_image), filename: image_name)
   p.save
