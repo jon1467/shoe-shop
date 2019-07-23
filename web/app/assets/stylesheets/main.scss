@@ -49,6 +49,11 @@ body {
   color: $text-overlay-colour;
 }
 
+.button__loader {
+  height: 25px;
+  filter: invert(0.9);
+}
+
 .money {
   color: $highlight-colour;
 }

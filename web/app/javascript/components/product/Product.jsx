@@ -6,9 +6,12 @@ class Product extends React.Component {
     super()
 
     this.addToCart = this.addToCart.bind(this)
+
+    this.state = { loading: false }
   }
 
   addToCart () {
+    this.setState({ loading: true })
     fetch(this.props.addToCartURL, {
       method: 'POST',
       headers: {
@@ -17,7 +20,9 @@ class Product extends React.Component {
       },
       credentials: 'same-origin',
       body: JSON.stringify({ id: this.props.id, basket_id: this.props.basketID })
-    }).then(response => response.json().then(data => { console.log(data) }))
+    }).then(response => response.json().then(data => {
+      this.setState({ loading: false })
+    }))
   }
 
   render () {
@@ -31,7 +36,11 @@ class Product extends React.Component {
             <h2 className="product__title">{this.props.title}</h2>
             <h3 className="product__price money">£{this.props.price}</h3>
           </div>
-          <div className="button button--buy button--product" onClick={this.addToCart}>Add To Cart</div>
+          <div
+            className="button button--buy button--product"
+            onClick={this.addToCart}>
+            {this.state.loading ? <img className='button__loader' src={this.props.loaderGIFURL}/> : 'Add To Cart'}
+          </div>
         </div>
       </React.Fragment>
     )

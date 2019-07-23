@@ -9,7 +9,8 @@
     price: @product.price,
     imagePath: product_image_url(@product.id),
     addToCartURL: baskets_add_url,
-    basketID: basket_id
+    basketID: basket_id,
+    loaderGIFURL: image_url("icon/loader.gif")
   },
   {
     class: "product"
