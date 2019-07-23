@@ -29,7 +29,7 @@ class Product extends React.Component {
         <div className="product__info">
           <div className="product__info-header-group">
             <h2 className="product__title">{this.props.title}</h2>
-            <h3 className="product__price">£{this.props.price}</h3>
+            <h3 className="product__price money">£{this.props.price}</h3>
           </div>
           <div className="button button--buy button--product" onClick={this.addToCart}>Add To Cart</div>
         </div>

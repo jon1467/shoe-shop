@@ -20,7 +20,7 @@ class ProductBox extends React.Component {
         </div>
         <div className="product-box__info">
           <div className="product-box__title">{this.props.title}</div>
-          <div className="product-box__price">£{this.props.price}</div>
+          <div className="product-box__price money">£{this.props.price}</div>
         </div>
       </div>
     )
