@@ -10,6 +10,9 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.web_socket_server_url = "wss://jp-shoe-shop.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://jp-shoe-shop.herokuapp.com', 'http://jp-shoe-shop.herokuapp.com']
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
