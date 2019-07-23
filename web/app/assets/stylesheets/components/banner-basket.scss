@@ -1,4 +1,8 @@
+@import 'theme';
+
 .banner-basket {
+  position: relative;
+
   width: 45px;
   margin-top: 2px;
 
@@ -8,4 +12,19 @@
 .banner-basket__image {
   width: 100%;
   filter: invert(1);
+}
+
+.banner-basket__count {
+  position: absolute;
+  top: 27px;
+
+  background-color: $main-colour;
+  padding: 2px;
+  width: 20px;
+
+  border-radius: 5px;
+  font-size: 17px;
+
+  color: $text-overlay-colour;
+  text-align: center;
 }

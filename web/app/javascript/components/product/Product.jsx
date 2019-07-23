@@ -16,7 +16,7 @@ class Product extends React.Component {
         'Content-Type': 'application/json'
       },
       credentials: 'same-origin',
-      body: JSON.stringify({ id: this.props.id })
+      body: JSON.stringify({ id: this.props.id, basket_id: this.props.basketID })
     }).then(response => response.json().then(data => { console.log(data) }))
   }
 

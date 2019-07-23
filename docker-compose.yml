@@ -21,6 +21,11 @@ services:
       - db
     stdin_open: true
     tty: true
+  redis:
+    image: redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./tmp/redis:/data
   webpacker:
     image: shoe-shop_web
     command: ["./webpack_dev.sh"]
