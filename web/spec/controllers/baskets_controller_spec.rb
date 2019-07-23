@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ShoppingCartsController, type: :controller do
+RSpec.describe BasketsController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do

@@ -8,7 +8,7 @@ class BannerBasket extends React.Component {
   }
 
   goToBasket () {
-    window.location.href = '/shopping_carts/product_list'
+    window.location.href = '/baskets/product_list'
   }
 
   render () {

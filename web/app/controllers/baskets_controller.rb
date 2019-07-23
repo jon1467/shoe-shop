@@ -1,4 +1,4 @@
-class ShoppingCartsController < ApplicationController
+class BasketsController < ApplicationController
   def index
     session[:cart] ||= {}
     render json: session[:cart]
