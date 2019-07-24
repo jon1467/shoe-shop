@@ -19,7 +19,7 @@ class ProductBox extends React.Component {
       stockWarning = (<div className="product-box__stock-box product-box__stock-box--warning">Only {this.props.product.stock} remaining!</div>)
     }
     if (this.props.product.stock === 0) {
-      stockWarning = <div className="product-box__stock-box product-box__stock-box--oos">Out of stock</div>
+      stockWarning = <div className="product-box__stock-box product-box__stock-box--oos">Out of Stock</div>
     }
     return stockWarning
   }

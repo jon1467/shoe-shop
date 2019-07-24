@@ -37,6 +37,12 @@ $button-height: 25px;
   color: $text-overlay-colour;
 }
 
+.button--disabled {
+  background-color: $frame-colour;
+  color: $text-overlay-colour;
+  pointer-events: none;
+}
+
 .button__loader {
   height: $button-height;
   filter: invert(0.9);

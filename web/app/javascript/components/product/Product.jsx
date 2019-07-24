@@ -28,6 +28,23 @@ class Product extends React.Component {
   }
 
   render () {
+    let buyButton
+    if (this.props.product.stock > 0) {
+      buyButton = (<Button
+        extraClasses='button--buy product-button'
+        onButtonClick={this.addToCart}
+        loaderGIFURL={this.props.loaderGIFURL}
+        text='Add To Cart'
+        loading={this.state.loading}
+      />)
+    } else {
+      buyButton = (<Button
+        extraClasses='button--disabled product-button'
+        text='Out of Stock'
+        loading={this.state.loading}
+      />)
+    }
+
     return (
       <React.Fragment>
         <div className="product__image-container">
@@ -38,13 +55,7 @@ class Product extends React.Component {
             <h2 className="product__title">{this.props.product.title}</h2>
             <h3 className="product__price money">£{this.props.product.price}</h3>
           </div>
-          <Button
-            extraClasses='button--buy button--product'
-            onButtonClick={this.addToCart}
-            loaderGIFURL={this.props.loaderGIFURL}
-            text='Add To Cart'
-            loading={this.state.loading}
-          />
+          {buyButton}
         </div>
       </React.Fragment>
     )
