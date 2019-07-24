@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   post 'orders/create'
 
   get 'baskets/index'
-  get 'baskets/product_list'
+  get 'baskets/show'
   post 'baskets/add'
-  post 'baskets/remove'
+  delete 'baskets/remove'
+  delete 'baskets/clear'
 
   resources :products, only: [:index, :show]
 

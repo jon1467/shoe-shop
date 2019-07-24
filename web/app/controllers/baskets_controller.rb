@@ -4,19 +4,19 @@ class BasketsController < ApplicationController
     render json: session[:basket]
   end
 
-  def product_list
-    @product_list = {}
+  def show
+    @basket = {}
     session[:basket] ||= {}
     session[:basket].each do |product_id, quantity|
       p = Product.find(product_id.to_i)
-      @product_list[product_id] = {
+      @basket[product_id] = {
         quantity: quantity,
         product: p,
         imagePath: helpers.product_image_url(p.id),
         productPath: product_url(p)
       }
     end
-    @product_list
+    @basket
   end
 
   def add
@@ -45,5 +45,11 @@ class BasketsController < ApplicationController
     end
 
     render json: session[:basket]
+  end
+
+  def clear
+    helpers.clear_basket
+
+    redirect_to home_index_path
   end
 end

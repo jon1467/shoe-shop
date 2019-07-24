@@ -1,7 +1,8 @@
 <%= react_component("basket/Basket",
   {
-    productList: @product_list,
+    productList: @basket,
     createOrderURL: orders_create_url,
+    clearBasketURL: baskets_clear_url,
     loaderGIFURL: image_url("icon/loader.gif")
   },
   { class: "basket" })

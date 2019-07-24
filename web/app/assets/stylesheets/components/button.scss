@@ -1,9 +1,14 @@
 @import 'theme';
 
+$button-height: 25px;
+
 .button {
   border-radius: 4px;
   padding: 10px;
   box-shadow: inset 0px 0px 4px 0px $border-colour;
+
+  height: $button-height;
+
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -11,6 +16,15 @@
   &:active {
     box-shadow: inset 0px 0px 8px 0px $border-colour;
   }
+
+  & + & {
+    margin-left: 15px;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .button--buy {
@@ -18,7 +32,12 @@
   color: $text-overlay-colour;
 }
 
+.button--destroy {
+  background-color: $error-colour;
+  color: $text-overlay-colour;
+}
+
 .button__loader {
-  height: 25px;
+  height: $button-height;
   filter: invert(0.9);
 }

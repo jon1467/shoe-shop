@@ -5,8 +5,14 @@
   margin: 0 auto;
 }
 
+.basket__buttons {
+  margin-top: 15px;
+}
+
 .basket__buy-button {
-  margin: 25px 0 0 auto;
   width: 150px;
-  height: 25px;
+}
+
+.basket__clear-button {
+  width: 120px;
 }

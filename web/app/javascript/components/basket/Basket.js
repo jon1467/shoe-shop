@@ -9,8 +9,12 @@ class Basket extends React.Component {
 
     this.goToPage = this.goToPage.bind(this)
     this.createOrder = this.createOrder.bind(this)
+    this.clearBasket = this.clearBasket.bind(this)
 
-    this.state = { loading: false }
+    this.state = {
+      loading: false,
+      clearing: false
+    }
   }
 
   goToPage (url) {
@@ -37,14 +41,34 @@ class Basket extends React.Component {
     })
   }
 
+  clearBasket () {
+    this.setState({ clearing: true })
+    fetch(this.props.clearBasketURL, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      },
+      credentials: 'same-origin'
+    }).then(response => {
+      if (response.redirected) this.goToPage(response.url)
+    })
+  }
+
   render () {
-    let button
+    let buyButton, clearButton
     if (!this.listIsEmpty()) {
-      button = <Button
+      buyButton = <Button
         extraClasses='basket__buy-button button--buy'
         text='Purchase'
         onButtonClick={this.createOrder}
         loading={this.state.loading}
+        loaderGIFURL={this.props.loaderGIFURL}
+      />
+      clearButton = <Button
+        extraClasses='basket__clear-button button--destroy'
+        text='Clear Basket'
+        onButtonClick={this.clearBasket}
+        loading={this.state.clearing}
         loaderGIFURL={this.props.loaderGIFURL}
       />
     }
@@ -52,7 +76,10 @@ class Basket extends React.Component {
     return (
       <React.Fragment>
         <ProductList productList={this.props.productList}/>
-        {button}
+        <div className="button-group basket__buttons">
+          {clearButton}
+          {buyButton}
+        </div>
       </React.Fragment>
     )
   }
