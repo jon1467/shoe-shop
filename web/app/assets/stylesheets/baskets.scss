@@ -1,0 +1,12 @@
+.basket {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.basket__buy-button {
+  margin: 25px 0 0 auto;
+  width: 150px;
+  height: 25px;
+}

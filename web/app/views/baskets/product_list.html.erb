@@ -1,4 +1,8 @@
-<%= react_component("product/ProductList",
-  { productList: @product_list },
-  { class: "product-list" })
+<%= react_component("basket/Basket",
+  {
+    productList: @product_list,
+    createOrderURL: orders_create_url,
+    loaderGIFURL: image_url("icon/loader.gif")
+  },
+  { class: "basket" })
 %>

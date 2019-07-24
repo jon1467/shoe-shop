@@ -1,0 +1,24 @@
+@import 'theme';
+
+@mixin frame($colour: $frame-colour) {
+  border: 1px solid $colour;
+  border-left: 8px solid $colour;
+}
+
+.notice-box {
+  @include frame;
+
+  margin: 10px;
+  padding: 23px;
+  padding-left: 10px;
+
+  border-radius: 0 5px 5px 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.notice-box--info {
+  @include frame($info-colour);
+}

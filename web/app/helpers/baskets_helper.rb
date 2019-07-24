@@ -7,4 +7,8 @@ module BasketsHelper
     end
     cookies.signed[:basket_id]
   end
+
+  def clear_basket
+    session[:basket] = {}
+  end
 end

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import ProductListItem from './ProductListItem'
 
@@ -32,22 +31,14 @@ class ProductList extends React.Component {
       return <React.Fragment>Your basket is empty.</React.Fragment>
     }
     return (
-      <React.Fragment>
+      <div className='product-list'>
         {this.state.productList.map((listItem, index) => {
           return <ProductListItem {...listItem} key={index}/>
         })}
         <div className="product-list__total money">£{this.total()}</div>
-        <div className="product-list__buy-button button button--buy">
-          Purchase
-        </div>
-      </React.Fragment>
+      </div>
     )
   }
 }
 
-ProductList.propTypes = {
-  title: PropTypes.string,
-  price: PropTypes.string,
-  imagePath: PropTypes.string
-}
 export default ProductList

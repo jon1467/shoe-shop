@@ -32,7 +32,6 @@ class BannerBasket extends React.Component {
   }
 
   handleReceiveNewData (data) {
-    console.log('data...')
     switch (data.action) {
       case 'add':
         this.updateBasket(data.basket)
@@ -74,8 +73,12 @@ class BannerBasket extends React.Component {
           className="banner-basket__image"
           onClick={this.goToBasket}
         />
-        {this.state.count > 0 &&
-          <div className="banner-basket__count">{this.state.count}</div>}
+        {
+          this.state.count > 0 &&
+          <div className="banner-basket__count" onClick={this.goToBasket}>
+            {this.state.count}
+          </div>
+        }
       </React.Fragment>
     )
   }

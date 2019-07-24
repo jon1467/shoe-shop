@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'orders/index'
+  get 'order/:key', to: 'orders#show', as: 'order'
+  post 'orders/create'
+
   get 'baskets/index'
   get 'baskets/product_list'
   post 'baskets/add'

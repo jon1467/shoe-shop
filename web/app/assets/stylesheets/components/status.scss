@@ -1,0 +1,80 @@
+@import 'theme';
+
+.status {
+  margin: 50px 50px 100px 50px;
+}
+
+.status__line {
+  position: relative;
+}
+
+.status__blob {
+  position: absolute;
+  top: -10px;
+  z-index: 1;
+
+  border-radius: 15px;
+  background: $frame-colour;
+
+  height: 30px;
+  width: 30px;
+}
+
+.status__blob--active {
+  background-color: $main-colour;
+}
+
+.status__blob-text {
+  position: absolute;
+  bottom: -26px;
+  left: -58px;
+
+  width: 150px;
+
+  font-size: 16px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status__blob--one  {
+  left: -1px;
+}
+
+.status__blob--two {
+  left: 33%;
+}
+
+.status__blob--three {
+  left: 66%;
+
+}
+
+.status__blob--four {
+  left: 96%;
+}
+
+.status__progress-line {
+  position: absolute;
+  background-color: $frame-colour;
+  height: 10px;
+  width: 33%;
+}
+
+.status__progress-line--active {
+  background-color: $main-colour;
+}
+
+.status__progress-line--one  {
+  left: 0;
+
+}
+
+.status__progress-line--two {
+  left: 33%;
+
+}
+
+.status__progress-line--three {
+  left: 66%;
+
+}

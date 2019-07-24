@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Button from '../Button'
+
 class Product extends React.Component {
   constructor () {
     super()
@@ -36,11 +38,13 @@ class Product extends React.Component {
             <h2 className="product__title">{this.props.title}</h2>
             <h3 className="product__price money">£{this.props.price}</h3>
           </div>
-          <div
-            className="button button--buy button--product"
-            onClick={this.addToCart}>
-            {this.state.loading ? <img className='button__loader' src={this.props.loaderGIFURL}/> : 'Add To Cart'}
-          </div>
+          <Button
+            extraClasses='button--buy button--product'
+            onButtonClick={this.addToCart}
+            loaderGIFURL={this.props.loaderGIFURL}
+            text='Add To Cart'
+            loading={this.state.loading}
+          />
         </div>
       </React.Fragment>
     )

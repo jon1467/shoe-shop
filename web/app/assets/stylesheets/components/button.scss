@@ -1,0 +1,24 @@
+@import 'theme';
+
+.button {
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: inset 0px 0px 4px 0px $border-colour;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:active {
+    box-shadow: inset 0px 0px 8px 0px $border-colour;
+  }
+}
+
+.button--buy {
+  background-color: $main-colour;
+  color: $text-overlay-colour;
+}
+
+.button__loader {
+  height: 25px;
+  filter: invert(0.9);
+}

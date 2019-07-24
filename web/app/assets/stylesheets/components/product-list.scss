@@ -3,9 +3,6 @@
 .product-list {
   display: flex;
   flex-direction: column;
-
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .product-list-item {
@@ -47,9 +44,4 @@
   margin: 10px 0 0 auto;
   font-size: 28px;
   font-weight: bold;
-}
-
-.product-list__buy-button {
-  width: 150px;
-  margin: 25px 0 0 auto;
 }
