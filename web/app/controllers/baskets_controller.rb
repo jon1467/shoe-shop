@@ -20,20 +20,29 @@ class BasketsController < ApplicationController
   end
 
   def add
-    # JSON doesn't support integer keys
-    id = params[:id].to_s
-    session[:basket] ||= {}
-    session[:basket][id] ||= 0
-    session[:basket][id] += 1
+    id = params[:id]
+    product = Product.find(id)
 
-    BasketsChannel.broadcast_to(params[:basket_id], {
-      action: 'add',
-      basket: session[:basket]
-    })
+    if product.stock > 0
+      product.decrease_stock
+      StockRestoreJob.set(wait: 15.minutes).perform_later(id)
+
+      # JSON doesn't support integer keys
+      id = id.to_s
+      session[:basket] ||= {}
+      session[:basket][id] ||= 0
+      session[:basket][id] += 1
+
+      BasketsChannel.broadcast_to(params[:basket_id], {
+        action: 'add',
+        basket: session[:basket]
+      })
+    end
 
     render json: session[:basket]
   end
 
+  # Don't bother restoring stock - will be back in 15 anyway
   def remove
     # JSON doesn't support integer keys
     id = params[:id].to_s

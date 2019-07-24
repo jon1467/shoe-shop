@@ -4,9 +4,7 @@
 
 <%= react_component("product/Product",
   {
-    id: @product.id,
-    title: @product.title,
-    price: @product.price,
+    product: @product,
     imagePath: product_image_url(@product.id),
     addToCartURL: baskets_add_url,
     basketID: basket_id,

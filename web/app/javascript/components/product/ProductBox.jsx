@@ -6,21 +6,36 @@ class ProductBox extends React.Component {
     super()
 
     this.goToProductPage = this.goToProductPage.bind(this)
+    this.getStockWarning = this.getStockWarning.bind(this)
   }
 
   goToProductPage () {
     window.location.href = this.props.productURL
   }
 
+  getStockWarning () {
+    let stockWarning
+    if (this.props.product.stock < 3) {
+      stockWarning = (<div className="product-box__stock-box product-box__stock-box--warning">Only {this.props.product.stock} remaining!</div>)
+    }
+    if (this.props.product.stock === 0) {
+      stockWarning = <div className="product-box__stock-box product-box__stock-box--oos">Out of stock</div>
+    }
+    return stockWarning
+  }
+
   render () {
+    const stockWarning = this.getStockWarning()
+
     return (
       <div className="product-box" onClick={this.goToProductPage}>
+        {stockWarning}
         <div className="product-box__image-container">
-          <img src={this.props.imagePath} alt={this.props.title} className="product-box__image" />
+          <img src={this.props.imagePath} alt={this.props.product.title} className="product-box__image" />
         </div>
         <div className="product-box__info">
-          <div className="product-box__title">{this.props.title}</div>
-          <div className="product-box__price money">£{this.props.price}</div>
+          <div className="product-box__title">{this.props.product.title}</div>
+          <div className="product-box__price money">£{this.props.product.price}</div>
         </div>
       </div>
     )

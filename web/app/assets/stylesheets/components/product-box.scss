@@ -33,3 +33,16 @@
 .product-box__image {
   width: 100%;
 }
+
+.product-box__stock-box {
+  position: absolute;
+
+  border-radius: 0 0 9px 0;
+  background-color: black;
+  padding: 3px 5px 3px;
+
+  height: 17px;
+
+  color: white;
+  font-size: 12px;
+}

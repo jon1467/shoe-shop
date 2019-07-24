@@ -9,9 +9,9 @@ RSpec.describe BasketsController, type: :controller do
     end
   end
 
-  describe "GET #product_list" do
+  describe "GET #show" do
     it "returns http success" do
-      get :product_list
+      get :show
       expect(response).to have_http_status(:success)
     end
   end

@@ -13,7 +13,7 @@ require 'rails_helper'
 RSpec.describe ProductsHelper, type: :helper do
   describe "image url" do
     it "serves a default image" do
-      p = Product.create(title: "no image", price: 0.0)
+      p = Product.create(title: "no image", price: 0.0, stock: 5)
       expect(helper.product_image_url(p.id)).to include("http://test.host/assets/no_image")
     end
   end
