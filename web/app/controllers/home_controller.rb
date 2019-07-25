@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @products = Product.all
+    @products = helpers.products_with_metadata
   end
 end

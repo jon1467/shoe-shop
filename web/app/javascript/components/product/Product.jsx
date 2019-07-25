@@ -1,15 +1,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ActionCable from 'actioncable'
 
 import Button from '../Button'
 
 class Product extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.addToCart = this.addToCart.bind(this)
+    this.establishActionCable = this.establishActionCable.bind(this)
+    this.handleReceiveNewData = this.handleReceiveNewData.bind(this)
 
-    this.state = { loading: false }
+    this.state = {
+      loading: false,
+      product: props.product
+    }
+  }
+
+  componentDidMount () {
+    this.establishActionCable()
+  }
+
+  establishActionCable () {
+    const cable = ActionCable.createConsumer('/cable')
+    this.sub = cable.subscriptions.create({
+      channel: 'ProductChannel',
+      id: this.props.product.id
+    },
+    { received: this.handleReceiveNewData })
+  }
+
+  handleReceiveNewData (data) {
+    switch (data.action) {
+      case 'update':
+        this.setState({ product: data.product })
+        break
+    }
   }
 
   addToCart () {
@@ -21,7 +48,7 @@ class Product extends React.Component {
         'Content-Type': 'application/json'
       },
       credentials: 'same-origin',
-      body: JSON.stringify({ id: this.props.product.id, basket_id: this.props.basketID })
+      body: JSON.stringify({ id: this.state.product.id, basket_id: this.props.basketID })
     }).then(response => response.json().then(data => {
       this.setState({ loading: false })
     }))
@@ -29,7 +56,7 @@ class Product extends React.Component {
 
   render () {
     let buyButton
-    if (this.props.product.stock > 0) {
+    if (this.state.product.stock > 0) {
       buyButton = (<Button
         extraClasses='button--buy product-button'
         onButtonClick={this.addToCart}
@@ -48,12 +75,12 @@ class Product extends React.Component {
     return (
       <React.Fragment>
         <div className="product__image-container">
-          <img src={this.props.imagePath} alt={this.props.product.title} className="product__image" />
+          <img src={this.props.imagePath} alt={this.state.product.title} className="product__image" />
         </div>
         <div className="product__info">
           <div className="product__info-header-group">
-            <h2 className="product__title">{this.props.product.title}</h2>
-            <h3 className="product__price money">£{this.props.product.price}</h3>
+            <h2 className="product__title">{this.state.product.title}</h2>
+            <h3 className="product__price money">£{this.state.product.price}</h3>
           </div>
           {buyButton}
         </div>

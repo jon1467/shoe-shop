@@ -33,7 +33,8 @@ class BasketsController < ApplicationController
       session[:basket][id] ||= 0
       session[:basket][id] += 1
 
-      BasketsChannel.broadcast_to(params[:basket_id], {
+      BroadcastStockJob.perform_now(product)
+      BroadcastBasketJob.perform_now(params[:basket_id], {
         action: 'add',
         basket: session[:basket]
       })

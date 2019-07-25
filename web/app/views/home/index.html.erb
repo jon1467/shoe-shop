@@ -1,14 +1,1 @@
-<div class="products">
-  <% @products.each do |product| %>
-    <%= react_component("product/ProductBox",
-      {
-        product: product,
-        imagePath: product_image_url(product.id),
-        productURL: product_url(product)
-      },
-      {
-        class: "product-box-container"
-      })
-    %>
-  <% end %>
-</div>
+<%= react_component "product/ProductGallery", { products: @products } %>

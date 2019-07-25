@@ -7,14 +7,11 @@
   margin: 0 auto;
 }
 
-.product-box-container {
+.product-box {
   border: $border-colour solid 2px;
   height: 240px;
   margin: 10px;
   flex-grow: 1;
-}
-
-.product-box {
   cursor: pointer;
 }
 
