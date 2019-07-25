@@ -15,7 +15,7 @@ class ProductBox extends React.Component {
 
   getStockWarning () {
     let stockWarning
-    if (this.props.product.stock < 3) {
+    if (this.props.product.stock <= 3) {
       stockWarning = (<div className="product-box__stock-box product-box__stock-box--warning">Only {this.props.product.stock} remaining!</div>)
     }
     if (this.props.product.stock === 0) {
