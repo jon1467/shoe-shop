@@ -11,7 +11,7 @@ class ProductGallery extends React.Component {
     this.handleReceiveNewData = this.handleReceiveNewData.bind(this)
 
     this.state = {
-      products: props.products
+      products: props.products.sort(this.productSort)
     }
   }
 
@@ -29,9 +29,13 @@ class ProductGallery extends React.Component {
   handleReceiveNewData (data) {
     switch (data.action) {
       case 'update_gallery':
-        this.setState({ products: data.products })
+        this.setState({ products: data.products.sort(this.productSort) })
         break
     }
+  }
+
+  productSort (a, b) {
+    return a.product.id - b.product.id
   }
 
   render () {
