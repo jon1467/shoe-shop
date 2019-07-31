@@ -3,6 +3,8 @@ A prototype solution based on a case study for a digital consultancy.
 
 React > Rails > PSQL + Redis >>> Heroku: https://jp-shoe-shop.herokuapp.com
 
+This is a very simple design mostly to demonstrate three features: responsive design, unique link order tracking pages, and live stock reporting through web sockets.
+
 ## Running
 `./dev.sh`
 
