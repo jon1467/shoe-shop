@@ -6,7 +6,7 @@ React > Rails > PSQL + Redis >>> Heroku: https://jp-shoe-shop.herokuapp.com
 ## Running
 `./dev.sh`
 
-Access at http://localhost:3000.
+Requires [https://www.docker.com/get-started](Docker)/[https://docs.docker.com/compose/gettingstarted/](Docker Compose). Access at http://localhost:3000.
 
 ## Deploying To Heroku
 `./heroku_push.sh`
