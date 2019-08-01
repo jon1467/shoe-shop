@@ -14,3 +14,6 @@ Requires [https://www.docker.com/get-started](Docker)/[https://docs.docker.com/c
 `./heroku_push.sh`
 
 You may need to change your app name to match your deployment.
+
+### Credentials Issues
+There is a master.key file not committed to this repository. You will have problems building for production without it. Look at [this issue](https://github.com/rails/rails/issues/32718) for guidance on how to get around that.
